@@ -1,0 +1,38 @@
+---
+description:根据选中的代码画出示意图
+globs:
+alwaysApply: false
+---
+
+- 请根据选中的代码画出示意图，使用Mermaid语法输出。
+- 注意：文字与背景色的反差对比要明显一些。示例：
+
+```Mermaid
+graph TD
+    A[用户填写注册表单] --> B[提交表单数据]
+    B --> C[signUp函数接收FormData]
+    C --> D[使用SignupFormSchema校验数据]
+    D --> E{校验是否通过?}
+    E -->|失败| F[返回字段错误信息]
+    E -->|成功| G[构造POST请求到后端]
+    G --> H[发送到后端注册接口]
+    H --> I{后端响应状态}
+    I -->|200 OK| J[注册成功，跳转到登录页]
+    I -->|409 Conflict| K[用户已存在错误]
+    I -->|其他错误| L[返回错误状态文本]
+    F --> M[前端显示错误消息]
+    K --> M
+    L --> M
+    
+    classDef start fill:#e3f2fd,stroke:#1565c0,stroke-width:3px,color:#0d47a1
+    classDef process fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#4a148c
+    classDef success fill:#e8f5e8,stroke:#2e7d32,stroke-width:3px,color:#1b5e20
+    classDef error fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#b71c1c
+    classDef decision fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#e65100
+    
+    class A start
+    class B,C,D,G,H process
+    class J success
+    class F,K,L,M error
+    class E,I decision
+```

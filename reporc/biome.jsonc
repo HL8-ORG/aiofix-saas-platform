@@ -1,0 +1,114 @@
+/**
+ * @file biome.jsonc
+ * @description
+ * Biome 配置文件，统一管理前端项目的代码格式化、Lint、导入排序等规范。
+ * 
+ * 主要原理与机制如下：
+ * 1. 通过 $schema 字段指定 Biome 配置的 JSON Schema，便于编辑器智能提示和校验。
+ * 2. vcs 配置启用 Git 版本控制集成，自动识别 .gitignore 文件，忽略不需要格式化/检查的文件。
+ * 3. files 配置控制文件忽略策略，ignoreUnknown 为 false 表示未知文件类型也会被处理。
+ * 4. formatter 配置详细控制代码格式化行为，如缩进风格、宽度、行尾符、属性换行等，支持 EditorConfig。
+ * 5. organizeImports 启用自动导入排序，提升代码可读性。
+ * 6. linter 配置启用 Lint 检查，细粒度控制各类规则（复杂度、正确性、风格、可疑代码等），
+ *    可根据团队实际需求调整开启/关闭的规则。
+ * 7. javascript 配置专门针对 JS/TS 代码的格式化细节（如引号风格、分号、JSX 属性等）和全局变量声明。
+ * 8. overrides 支持对特定文件（如 package.json）应用特殊格式化规则（如单行宽度），
+ *    便于兼容 NPM 官方格式化风格。
+ */
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "vcs": { 
+    "enabled": true, // 启用版本控制系统集成（如 Git）
+    "clientKind": "git", // 指定使用 git 作为 VCS 客户端
+    "useIgnoreFile": true // 自动识别 .gitignore 文件，忽略不需要格式化/检查的文件
+  },
+  "files": { 
+    "ignoreUnknown": false, // 未知类型文件也会被 Biome 处理
+    "ignore": [] // 额外需要忽略的文件列表，当前为空
+  },
+  "formatter": {
+    "enabled": true, // 启用代码格式化功能
+    "useEditorconfig": true, // 支持 .editorconfig 配置
+    "formatWithErrors": false, // 遇到语法错误时不进行格式化
+    "indentStyle": "space", // 使用空格进行缩进
+    "indentWidth": 2, // 缩进宽度为 2 个空格
+    "lineEnding": "lf", // 使用 LF 作为行尾符
+    "lineWidth": 80, // 每行最大宽度为 80 字符
+    "attributePosition": "auto", // 属性换行位置自动判断
+    "bracketSpacing": true // 对象大括号内添加空格
+  },
+  "organizeImports": { 
+    "enabled": true // 启用自动导入排序
+  },
+  "linter": {
+    "enabled": true, // 启用 Lint 检查
+    "rules": {
+      "recommended": false, // 不启用 Biome 推荐规则集，按自定义规则配置
+      "complexity": { 
+        "noUselessTypeConstraint": "error" // 禁止无用的类型约束（如 <T extends any>），否则报错
+      },
+      "correctness": {
+        "noConstAssign": "off", // 允许对 const 变量重新赋值（不检查）
+        "noGlobalObjectCalls": "off", // 允许对全局对象直接调用（不检查）
+        "noInvalidBuiltinInstantiation": "off", // 允许错误地实例化内置对象（不检查）
+        "noInvalidConstructorSuper": "off", // 允许构造函数中错误地调用 super（不检查）
+        "noNewSymbol": "off", // 允许直接 new Symbol（不检查）
+        "noSetterReturn": "off", // 允许 setter 返回值（不检查）
+        "noUndeclaredVariables": "off", // 允许未声明变量（不检查）
+        "noUnreachable": "off", // 允许不可达代码（不检查）
+        "noUnreachableSuper": "off", // 允许 super 之后的不可达代码（不检查）
+        "noUnusedVariables": "error", // 禁止未使用的变量，否则报错
+        "useArrayLiterals": "off" // 允许使用 Array 构造函数（不强制用字面量）
+      },
+      "style": {
+        "noArguments": "error", // 禁止使用 arguments 对象
+        "noNamespace": "error", // 禁止使用 TypeScript namespace
+        "noVar": "error", // 禁止使用 var 声明变量
+        "useAsConstAssertion": "error", // 建议使用 as const 断言
+        "useBlockStatements": "off", // 允许 if/else/循环等语句块省略大括号
+        "useConst": "error" // 能用 const 的地方必须用 const
+      },
+      "suspicious": {
+        "noClassAssign": "off", // 允许对类名重新赋值（不检查）
+        "noDuplicateClassMembers": "off", // 允许类中有重复成员（不检查）
+        "noDuplicateObjectKeys": "off", // 允许对象字面量中有重复 key（不检查）
+        "noDuplicateParameters": "off", // 允许函数参数名重复（不检查）
+        "noExplicitAny": "warn", // 显式使用 any 类型时警告
+        "noExtraNonNullAssertion": "error", // 禁止多余的非空断言（!!）
+        "noFunctionAssign": "off", // 允许对函数名重新赋值（不检查）
+        "noImportAssign": "off", // 允许对导入的模块重新赋值（不检查）
+        "noMisleadingInstantiator": "error", // 禁止误用构造器（如 new Promise.resolve）
+        "noRedeclare": "off", // 允许变量重复声明（不检查）
+        "noUnsafeDeclarationMerging": "error", // 禁止不安全的声明合并
+        "noUnsafeNegation": "off", // 允许不安全的否定操作（不检查）
+        "useGetterReturn": "off", // 允许 getter 没有返回值（不检查）
+        "useNamespaceKeyword": "error" // 必须使用 namespace 关键字（一般用于类型声明文件）
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "double", // JSX 属性值使用双引号
+      "quoteProperties": "asNeeded", // 仅在必要时为对象属性加引号
+      "trailingCommas": "all", // 多行对象/数组的最后一项加逗号
+      "semicolons": "asNeeded", // 仅在需要时添加分号
+      "arrowParentheses": "always", // 箭头函数参数总是加括号
+      "bracketSameLine": false, // 多行 JSX 标签的 > 不与属性同一行
+      "quoteStyle": "single", // 普通字符串使用单引号
+      "attributePosition": "auto", // JSX 属性换行位置自动判断
+      "bracketSpacing": true // 对象大括号内添加空格
+    },
+    "globals": ["exports"], // 声明全局变量 exports
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true // 允许实验性的参数装饰器语法
+    }
+  },
+  "overrides": [
+    {
+      "include": ["**/package.json"], // 仅匹配 package.json 文件
+      "formatter": {
+        "lineWidth": 1 // package.json 强制每行宽度为 1，兼容 NPM 官方格式
+      }
+    }
+  ]
+}

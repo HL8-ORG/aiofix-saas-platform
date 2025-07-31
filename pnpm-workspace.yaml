@@ -1,0 +1,6 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+  - "libs/*"
+  - "reporc/*"
+  - "!apps/web"
