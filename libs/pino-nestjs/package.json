@@ -1,0 +1,55 @@
+{
+  "name": "@libs/pino-nestjs",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "pnpm build --watch",
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && pnpm tsc -b -v"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist/**"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "src/*"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./*": {
+      "import": "./dist/*.js",
+      "require": "./dist/*.js"
+    }
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.5",
+    "@nestjs/mapped-types": "*",
+    "async_hooks": "^1.0.0",
+    "fastify": "^5.4.0",
+    "hyperid": "^3.3.0",
+    "nestjs-cls": "^6.0.1",
+    "pino": "^9.7.0",
+    "pino-http": "^10.5.0",
+    "radashi": "^12.6.0",
+    "rxjs": "7.8.2"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "22.16.4",
+    "ts-loader": "9.5.2",
+    "ts-node": "10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
