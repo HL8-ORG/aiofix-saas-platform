@@ -1,0 +1,12 @@
+---
+description: project-structure
+globs:
+  - "**/*.ts"          # 所有 TypeScript 文件
+  - "**/*.tsx"         # 所有 TSX 文件
+  - "**/*.js"          # 所有 JavaScript 文件
+  - "**/*.jsx"         # 所有 JSX 文件
+alwaysApply: true
+---
+
+这是一个前后端分离的全栈项目，前端（客户端）基于`Next.js`框架开发，后端（服务端）基于`NestJS`框架开发，前后端均使用`TypeScript`作为主要开发语言。
+

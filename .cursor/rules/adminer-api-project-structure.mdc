@@ -1,6 +1,0 @@
----
-description: adminer-api-project-structure
-globs:
-alwaysApply: false
----
-本项目基于`nestjs`框架进行开发。

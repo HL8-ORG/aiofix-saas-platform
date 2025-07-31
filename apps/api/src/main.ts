@@ -86,6 +86,15 @@ async function bootstrap() {
   logger.log('应用启动成功，开始监听端口');
   logger.error('测试错误日志');
   logger.debug('测试调试日志');
+
+  // 启用CORS，允许前端跨域访问
+  app.enableCors({
+    origin: ['http://localhost:3000', 'http://localhost:3001'], // 允许的前端域名
+    credentials: true, // 允许携带凭证
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // 允许的HTTP方法
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-request-id'], // 允许的请求头
+  });
+
   // 配置 class-validator 使用 Nest 的依赖注入容器，支持自定义校验器注入
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
   // Swagger configuration

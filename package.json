@@ -15,7 +15,8 @@
     "libs:fix": "pnpm dlx sherif@latest --fix",
     "preinstall": "husky install",
     "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/design-system",
-    "docs": "cd ./tools/docs && mintlify dev"
+    "docs": "cd ./tools/docs && mintlify dev",
+    "setup-env": "./scripts/setup-env.sh"
   },
   "config": {
     "commitizen": {
