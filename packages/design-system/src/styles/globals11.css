@@ -1,0 +1,241 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* 定义暗色模式变体，当元素或其父元素有.dark类时应用 */
+@custom-variant dark (&:is(.dark *));
+
+/* 定义亮色模式变量 */
+:root {
+  /* 背景色 */
+  --background: oklch(1 0 0);
+  /* 前景色 */
+  --foreground: oklch(0.145 0 0);
+  /* 卡片背景色 */
+  --card: oklch(1 0 0);
+  /* 卡片前景色 */
+  --card-foreground: oklch(0.145 0 0);
+  /* 弹出层背景色 */
+  --popover: oklch(1 0 0);
+  /* 弹出层前景色 */
+  --popover-foreground: oklch(0.145 0 0);
+  /* 主色 */
+  --primary: oklch(0.205 0 0);
+  /* 主色前景色 */
+  --primary-foreground: oklch(0.985 0 0);
+  /* 次要色 */
+  --secondary: oklch(0.97 0 0);
+  /* 次要色前景色 */
+  --secondary-foreground: oklch(0.205 0 0);
+  /* 弱化色 */
+  --muted: oklch(0.97 0 0);
+  /* 弱化前景色 */
+  --muted-foreground: oklch(0.556 0 0);
+  /* 强调色 */
+  --accent: oklch(0.97 0 0);
+  /* 强调色前景色 */
+  --accent-foreground: oklch(0.205 0 0);
+  /* 破坏性操作色 */
+  --destructive: oklch(0.577 0.245 27.325);
+  /* 破坏性操作前景色 */
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  /* 边框色 */
+  --border: oklch(0.922 0 0);
+  /* 输入框色 */
+  --input: oklch(0.922 0 0);
+  /* 焦点环色 */
+  --ring: oklch(0.708 0 0);
+  /* 图表颜色1 */
+  --chart-1: oklch(0.646 0.222 41.116);
+  /* 图表颜色2 */
+  --chart-2: oklch(0.6 0.118 184.704);
+  /* 图表颜色3 */
+  --chart-3: oklch(0.398 0.07 227.392);
+  /* 图表颜色4 */
+  --chart-4: oklch(0.828 0.189 84.429);
+  /* 图表颜色5 */
+  --chart-5: oklch(0.769 0.188 70.08);
+  /* 圆角大小 */
+  --radius: 0.625rem;
+  /* 侧边栏背景色 */
+  --sidebar: oklch(0.985 0 0);
+  /* 侧边栏前景色 */
+  --sidebar-foreground: oklch(0.145 0 0);
+  /* 侧边栏主色 */
+  --sidebar-primary: oklch(0.205 0 0);
+  /* 侧边栏主色前景色 */
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  /* 侧边栏强调色 */
+  --sidebar-accent: oklch(0.97 0 0);
+  /* 侧边栏强调色前景色 */
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  /* 侧边栏边框色 */
+  --sidebar-border: oklch(0.922 0 0);
+  /* 侧边栏焦点环色 */
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+/* 定义暗色模式变量 */
+.dark {
+  /* 背景色 */
+  --background: oklch(0.145 0 0);
+  /* 前景色 */
+  --foreground: oklch(0.985 0 0);
+  /* 卡片背景色 */
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  /* 弹出层背景色 */
+  --popover: oklch(0.145 0 0);
+  /* 弹出层前景色 */
+  --popover-foreground: oklch(0.985 0 0);
+  /* 主色 */
+  --primary: oklch(0.985 0 0);
+  /* 主色前景色 */
+  --primary-foreground: oklch(0.205 0 0);
+  /* 次要色 */
+  --secondary: oklch(0.269 0 0);
+  /* 次要色前景色 */
+  --secondary-foreground: oklch(0.985 0 0);
+  /* 弱化色 */
+  --muted: oklch(0.269 0 0);
+  /* 弱化前景色 */
+  --muted-foreground: oklch(0.708 0 0);
+  /* 强调色 */
+  --accent: oklch(0.269 0 0);
+  /* 强调色前景色 */
+  --accent-foreground: oklch(0.985 0 0);
+  /* 破坏性操作色 */
+  --destructive: oklch(0.396 0.141 25.723);
+  /* 破坏性操作前景色 */
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  /* 边框色 */
+  --border: oklch(0.269 0 0);
+  /* 输入框色 */
+  --input: oklch(0.269 0 0);
+  /* 焦点环色 */
+  --ring: oklch(0.556 0 0);
+  /* 图表颜色1 */
+  --chart-1: oklch(0.488 0.243 264.376);
+  /* 图表颜色2 */
+  --chart-2: oklch(0.696 0.17 162.48);
+  /* 图表颜色3 */
+  --chart-3: oklch(0.769 0.188 70.08);
+  /* 图表颜色4 */
+  --chart-4: oklch(0.627 0.265 303.9);
+  /* 图表颜色5 */
+  --chart-5: oklch(0.645 0.246 16.439);
+  /* 侧边栏背景色 */
+  --sidebar: oklch(0.205 0 0);
+  /* 侧边栏前景色 */
+  --sidebar-foreground: oklch(0.985 0 0);
+  /* 侧边栏主色 */
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  /* 侧边栏主色前景色 */
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  /* 侧边栏强调色 */
+  --sidebar-accent: oklch(0.269 0 0);
+  /* 侧边栏强调色前景色 */
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  /* 侧边栏边框色 */
+  --sidebar-border: oklch(0.269 0 0);
+  /* 侧边栏焦点环色 */
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+/* 将CSS变量映射到Tailwind主题配置 */
+@theme inline {
+  /* 背景色变量映射 */
+  --color-background: var(--background);
+  /* 前景色(文字)变量映射 */
+  --color-foreground: var(--foreground);
+  /* 卡片背景色变量映射 */
+  --color-card: var(--card);
+  /* 卡片前景色变量映射 */
+  --color-card-foreground: var(--card-foreground);
+  /* 弹出层背景色变量映射 */
+  --color-popover: var(--popover);
+  /* 弹出层前景色变量映射 */
+  --color-popover-foreground: var(--popover-foreground);
+  /* 主色变量映射 */
+  --color-primary: var(--primary);
+  /* 主色前景色变量映射 */
+  --color-primary-foreground: var(--primary-foreground);
+  /* 次要色变量映射 */
+  --color-secondary: var(--secondary);
+  /* 次要色前景色变量映射 */
+  --color-secondary-foreground: var(--secondary-foreground);
+  /* 弱化色变量映射 */
+  --color-muted: var(--muted);
+  /* 弱化前景色变量映射 */
+  --color-muted-foreground: var(--muted-foreground);
+  /* 强调色变量映射 */
+  --color-accent: var(--accent);
+  /* 强调前景色变量映射 */
+  --color-accent-foreground: var(--accent-foreground);
+  /* 破坏性操作色变量映射 */
+  --color-destructive: var(--destructive);
+  /* 破坏性操作前景色变量映射 */
+  --color-destructive-foreground: var(--destructive-foreground);
+  /* 边框色变量映射 */
+  --color-border: var(--border);
+  /* 输入框色变量映射 */
+  --color-input: var(--input);
+  /* 焦点环色变量映射 */
+  --color-ring: var(--ring);
+  /* 图表颜色1变量映射 */
+  --color-chart-1: var(--chart-1);
+  /* 图表颜色2变量映射 */
+  --color-chart-2: var(--chart-2);
+  /* 图表颜色3变量映射 */
+  --color-chart-3: var(--chart-3);
+  /* 图表颜色4变量映射 */
+  --color-chart-4: var(--chart-4);
+  /* 图表颜色5变量映射 */
+  --color-chart-5: var(--chart-5);
+  /* 小圆角尺寸计算 */
+  --radius-sm: calc(var(--radius) - 4px);
+  /* 中等圆角尺寸计算 */
+  --radius-md: calc(var(--radius) - 2px);
+  /* 大圆角尺寸变量映射 */
+  --radius-lg: var(--radius);
+  /* 超大圆角尺寸计算 */
+  --radius-xl: calc(var(--radius) + 4px);
+  /* 侧边栏背景色变量映射 */
+  --color-sidebar: var(--sidebar);
+  /* 侧边栏前景色变量映射 */
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  /* 侧边栏主色变量映射 */
+  --color-sidebar-primary: var(--sidebar-primary);
+  /* 侧边栏主前景色变量映射 */
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  /* 侧边栏强调色变量映射 */
+  --color-sidebar-accent: var(--sidebar-accent);
+  /* 侧边栏强调前景色变量映射 */
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  /* 侧边栏边框色变量映射 */
+  --color-sidebar-border: var(--sidebar-border);
+  /* 侧边栏焦点环色变量映射 */
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* 基础层样式 */
+@layer base {
+
+  /* 所有元素默认边框样式 */
+  * {
+    /* 使用Tailwind应用边框和轮廓色 */
+    @apply border-border outline-ring/50;
+  }
+
+  /* 页面基础样式 */
+  body {
+    /* 设置背景和文字颜色 */
+    @apply bg-background text-foreground;
+  }
+
+  /* 平滑滚动效果 */
+  html {
+    /* 平滑滚动效果 */
+    scroll-behavior: smooth;
+    /* 启动平滑滚动效果，应用在首页 */
+  }
+}

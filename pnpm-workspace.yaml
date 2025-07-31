@@ -3,4 +3,3 @@ packages:
   - "packages/*"
   - "libs/*"
   - "reporc/*"
-  - "!apps/web"
